@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pan-Latin Keyboard Demo</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="panlatinkb.js"></script>
+</head>
+
+<body>
+<h2>Pan-Latin Keyboard Demo</h2>
+
+<textarea class="plkb" id="foo" rows=77 cols=70>
+Type any US ASCII text into this box.
+Each digit is used to add diacritical marks to
+the previous letter:
+
+1:  acute - applies to: {aceilnosuwyzACEILNOSUWYZ}
+
+           e + 1  ==>  é
+
+       special case: [ouOU]
+
+           o + 1 + 1  ==>  ő  (Hungarian o with double acute)
+
+   2:  grave    - applies to: {aeiouwyAEIOUWY}
+
+           o + 2  ==>  ò
+
+       special case: [aeiouAEIOU]
+
+           e + 2 + 2  ==> ē   (e with macron)
+
+   3:  diaeresis - {aeiouwyAEIOUWY}
+       horizontal stroke - {dhlDHL}
+
+           u + 3  ==> ü
+           h + 3  ==> ħ
+
+   4:  circumflex - {aceghijouswyACEGHIJOUSWY}
+ 
+           a + 4  ==> â
+           j + 4  ==> ĵ
+
+   5:  breve - {augAUG}
+       caron - {cdelnrstzCDELNRSTZ}
+       diagonal stroke - {oO}
+
+           u + 5  ==>  ŭ
+           e + 5  ==>  ě
+           o + 5  ==>  ø
+
+   6:  tilde - {ainouAINOU}
+       comma below - {stST}
+ 
+           a + 6  ==>  ã
+           n + 6  ==>  ñ
+           s + 6  ==>  ș
+
+   7:  ring above - {auAU}
+       dot above  - {cegnzCEGINZ}
+
+           a + 7  ==>  å
+           z + 7  ==>  ż
+           I + 7  ==>  İ  (Turkish capital I with dot)
+
+   8:  ogonek  - {aeiuAEIU}
+       cedilla - {cgklnsCGKLNS}
+
+           u + 8  ==>  ų
+           c + 8  ==>  ç
+
+   9:  special - {adostADOST?!<>}
+
+           a + 9  ==>  æ   (latin ae ligature)
+           d + 9  ==>  ð   (Icelandic ETH)
+           s + 9  ==>  ß   (German sharp S)
+           ? + 9  ==>  ¿   (Spanish inverted question mark)
+
+   0:  clear
+       used to clear marks or restore a character to its orignal form
+
+           e + 3  ==>  ë
+           ë + 0  ==>  e
+
+       as a special case,
+
+           i + 0  ==>  ı   (Turkish dotless i)
+</textarea>
+
+</body>
+</html>
