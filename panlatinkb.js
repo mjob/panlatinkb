@@ -134,6 +134,7 @@ SOFTWARE.
 //   make this program more usable for you are welcome.
 //   -- mobrule at gmail.com
 //
+// Version 0.01
 
 
 var plkb_map = {
@@ -480,7 +481,7 @@ function plkb_combine_keys( mode, c1, c2 ) {
     return 0;
 }
 
-function init_mlkeyboard( elem ) {
+function init_plkeyboard( elem ) {
     if (!elem) elem = $(this);
     if (!elem.attr("plkb-mode")) {
 	elem.attr("plkb-mode", "all");
@@ -490,5 +491,5 @@ function init_mlkeyboard( elem ) {
 }
 
 $(document).ready( function() {
-    $(".plkb").each( init_mlkeyboard );
+    $(".plkb").each( init_plkeyboard );
 } );
