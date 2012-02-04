@@ -1,0 +1,94 @@
+Pan-Latin Keyboard JavaScript App
+=================================
+
+Every bilingual computer user faces the dilemma of having
+a keyboard in front of them that is perfect for one of the
+languages that they know, but bad for the other language(s)
+they know. The Pan-Latin keyboard class is an attempt
+to solve this problem, at least for a good chunk of those
+languages that use the Latin alphabet.
+
+This script attaches behavior to an HTML textarea or
+other text input element. This way, someone sitting
+at an en-US keyboard can still type their é's, ñ's,
+and ß's without too much trouble.
+
+Each digit from 1 to 9 is associated with one or more
+diacritical marks. Here are the meanings of each digit,
+and the set of extended-Latin characters that you can
+type with this class
+
+    1 - acute                áćéíĺńóśúẃýźÁĆÉÍĹŃÓŚÚẂÝŹ
+    2 - grave                àèìòùẁỳÀÈÌÒÙẀỲ
+    3 - diaeresis            äëïöüẅÿÄËÏÖÜẄŸ
+      - horizontal stroke    đħłĐĦŁ
+    4 - circumflex           äĉêĝĥîĵôûŝŵŷÂĈÊĜĤÎĴÔÛŜŴŶ
+    5 - breve                ăğŭĂĞŬ
+        caron                čďěľňřšťžČĎĚĽŇŘŠŤŽ
+        diagonal stroke      øØ
+    6 - tilde                ãĩñõũÃĨÑÕŨ
+    7 - ring above           åůÅŮ
+        dot above            ċėġṅżĊĖĠİṄŻ
+    8 - ogonek               ąęįųĄĘĮŲ
+        cedilla              çģķļņşÇĢĶĻŅŞ
+    9 - "special"            æðœßþÆÐŒẞÞ¿¡«»
+    
+    0 can be used to "clear" a mark. 
+
+             e + 3  ==>  ë ,  ë + 0  ==>  e
+
+      and also to make the Turkish dotless i:  ı
+
+   11 - double acute          őű
+   22 - macron                āēīōūĀĒĪŌŪ
+
+These characters should be sufficient for all your typing
+needs for many languages, including Spanish, Portuguese, 
+German,  French, Turkish, Italian, Polish, Romanian, Dutch,
+Serbian, Croatian, Bosnian, Hungarian, Catalan, Czech,
+Swedish, Danish, Finnish, Slovak, Afrikaans, Norwegian,
+and many others.
+
+
+USAGE
+
+Include the source from the enclosed  panlatinkb.js
+file in your HTML file. Assign any textarea elements
+you wish to have this behavior available for to the
+class "plkb".
+
+    <textarea class="plkb" rows="..." cols="...">
+    your text here
+    </textarea>
+
+
+SUPPORT/FEEDBACK
+
+Please send feedback or feature requests to  
+mobrule@gmail.com . I'm particularly interested
+in hearing whether this is 
+
+LICENSE AND COPYRIGHT
+
+Copyright (c) 2012, Marty O'Brien.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
