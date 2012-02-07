@@ -2,90 +2,187 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pan-Latin Keyboard Demo</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="panlatinkb-map.js"></script>
 <script type="text/javascript" src="panlatinkb.js"></script>
 </head>
 
 <body>
 <h2>Pan-Latin Keyboard Demo</h2>
 
-<textarea class="plkb" id="foo" rows=77 cols=70>
-Type any US ASCII text into this box.
-Each digit is used to add diacritical marks to
-the previous letter:
 
-1:  acute - applies to: {aceilnosuwyzACEILNOSUWYZ}
+&lt;textarea ...&gt; mode: <select id="foo" onchange="updatemode()" name="z">
+<option value="all">all - All chars except some Vietnamese</option>
+<option value="off">off - turn diacritic key combos off</option>
+<option value="af">af - Afrikans</option>
+<option value="bs">bs - Bosnian</option>
+<option value="ca">ca - Catalan</option>
+<option value="cs">cs - Czech</option>
+<option value="cy">cy - Welsh</option>
+<option value="da">da - Danish</option>
+<option value="de">de - German</option>
+<option value="eo">eo - Esperanto</option>
+<option value="es">es - Spanish</option>
+<option value="et">et - Estonian</option>
+<option value="eu">eu - Basque</option>
+<option value="fi">fi - Finnish</option>
+<option value="fr">fr - French</option>
+<option value="hr">hr - Croatian</option>
+<option value="hu">hu - Hungarian</option>
+<option value="is">is - Icelandic</option>
+<option value="it">it - Italian</option>
+<option value="lt">lt - Lithuanian</option>
+<option value="lv">lv - Latvian</option>
+<option value="no">no - Norwegian</option>
+<option value="pl">pl - Polish</option>
+<option value="pt">pt - Portuguese</option>
+<option value="ro">ro - Romanian</option>
+<option value="sk">sk - Slovak</option>
+<option value="sl">sl - Slovenian</option>
+<option value="sq">sq - Albanian</option>
+<option value="sr">sr - Serbian</option>
+<option value="sv">sv - Swedish</option>
+<option value="tr">tr - Turkish</option>
+<option value="vi">vi - Vietnamese (VNI)</option>
+</select>
+<textarea id="foo" rows=77 cols=70>
+Type any US ASCII text into this box. Certain letter/digit combinations
+will create latin alphabet characters with diacritical marks (accents):
 
-           e + 1  ==>  é
+   1:  acute - used in many languages
 
-       special case: [ouOU]
+   [aceilnosuwyz ACEILNOSUWYZ] + 1  ==>  [áćéíĺńóśúẃýź ÁĆÉÍĹŃÓŚÚẂÝŹ]
 
-           o + 1 + 1  ==>  ő  (Hungarian o with double acute)
+   11: double-acute - Hungarian
 
-   2:  grave    - applies to: {aeiouwyAEIOUWY}
+                   [ou OU] + 1 + 1  ==>  [őű ŐŰ]
 
-           o + 2  ==>  ò
+   2:  grave - Afrikaans, Catalan, Welsh, French, Italian, Norwegian,
+               Portuguese, Romanian, Swedish
 
-       special case: [aeiouAEIOU]
+             [aeiouwy AEIOUWY] + 2  ==>  [àèìòùẁỳ ÀÈÌÒÙẀỲ]
 
-           e + 2 + 2  ==> ē   (e with macron)
+   22: macron - Latvian, Lithuanian
 
-   3:  diaeresis - {aeiouwyAEIOUWY}
-       horizontal stroke - {dhlDHL}
+             [aeiou AEIOU] + 2 + 2  ==>  [āēīōū ĀĒĪŌŪ]
 
-           u + 3  ==> ü
-           h + 3  ==> ħ
+   3:  diaeresis - used in many languages
+       horizontal stroke - Bosnian, Croatian, Polish, Serbian
 
-   4:  circumflex - {aceghijouswyACEGHIJOUSWY}
+             [aeiouwy AEIOUWY] + 3  ==>  [äëïöüẅÿ ÄËÏÖÜẄŸ]
+                     [dhl DHL] + 3  ==>  [đħł ĐĦŁ]
+
+   4:  circumflex - Afrikaans, Welsh, Esperanto, French, Kurdish,
+                    Norwegian, Portuguese, Romanian, Slovak
+
+   [aceghijouswy ACEGHIJOUSWY] + 4  ==>  [âĉêĝĥîĵôûŝŵŷ ÂĈÊĜĤÎĴÔÛŜŴŶ]
  
-           a + 4  ==> â
-           j + 4  ==> ĵ
+   5:  breve - Esperanto, Romanian, Turkish
+       caron - Bosnian, Czech, Estonian, Finnish, Croatian, Latvian,
+               Lithuanian, Slovak, Slovenian, Serbian
+       diagonal stroke - Danish, Norwegian
 
-   5:  breve - {augAUG}
-       caron - {cdelnrstzCDELNRSTZ}
-       diagonal stroke - {oO}
+                     [aug AUG] + 5  ==>  [ăŭğ ĂŬĞ]
+         [cdelnrstz CDELNRSTZ] + 5  ==>  [čďěľňřšťž ČĎĚĽŇŘŠŤŽ]
+                         [o O] + 5  ==>  [ø Ø]
 
-           u + 5  ==>  ŭ
-           e + 5  ==>  ě
-           o + 5  ==>  ø
+   6:  tilde - Spanish, Estonian, Basque, Galician, Portuguese
+       comma below - Romanian
 
-   6:  tilde - {ainouAINOU}
-       comma below - {stST}
- 
-           a + 6  ==>  ã
-           n + 6  ==>  ñ
-           s + 6  ==>  ș
+                 [ainou AINOU] + 6  ==>  [ãĩñõũ ÃĨÑÕŨ]
+                       [st ST] + 6  ==>  [șț ȘȚ]
 
-   7:  ring above - {auAU}
-       dot above  - {cegnzCEGINZ}
+   7:  ring above - Czech, Danish, Finnish, Norwegian, Swedish
+       dot above  - Lithuanian, Polish, Turkish (capital I)
+       middle dot - Catalan
 
-           a + 7  ==>  å
-           z + 7  ==>  ż
-           I + 7  ==>  İ  (Turkish capital I with dot)
+                       [au AU] + 7  ==>  [åů ÅŮ]
+                [cegnz CEGINZ] + 7  ==>  [ċėġṅż ĊĖĠİṄŻ]
+                             l + 7  ==>  ŀ
 
-   8:  ogonek  - {aeiuAEIU}
-       cedilla - {cgklnsCGKLNS}
+   8:  ogonek  - Lithuanian, Polish
+       cedilla - Catalan, Basque, French, Kurdish, Latvian, Portuguese
+                 Turkish
 
-           u + 8  ==>  ų
-           c + 8  ==>  ç
+                   [aeiu AEIU] + 8  ==>  [ąęįų ĄĘĮŲ]
+               [cgklns CGKLNS] + 8  ==>  [çģķļņş ÇĢĶĻŅŞ]
 
-   9:  special - {adostADOST?!<>}
+   9:  special - ligatures, special letters, and special punctuation
 
-           a + 9  ==>  æ   (latin ae ligature)
-           d + 9  ==>  ð   (Icelandic ETH)
-           s + 9  ==>  ß   (German sharp S)
-           ? + 9  ==>  ¿   (Spanish inverted question mark)
+            [adost ADOST ?!<>] + 9  ==>  [æðœßþ ÆÐŒẞÞ ¿¡«»]
 
-   0:  clear
-       used to clear marks or restore a character to its orignal form
+   0:  clear - restore a character to its basic form
 
            e + 3  ==>  ë
            ë + 0  ==>  e
 
-       as a special case,
+       and as a special case,
 
            i + 0  ==>  ı   (Turkish dotless i)
 </textarea>
 
+<p/>
+
+&lt;input type="text" ...&gt; mode: <select name="foo-plkb-mode" id="bar">
+<option value="all">all - All chars except some Vietnamese</option>
+<option value="off">off - turn diacritic key combos off</option>
+<option value="af">af - Afrikans</option>
+<option value="bs">bs - Bosnian</option>
+<option value="ca">ca - Catalan</option>
+<option value="cs">cs - Czech</option>
+<option value="cy">cy - Welsh</option>
+<option value="da">da - Danish</option>
+<option value="de">de - German</option>
+<option value="eo">eo - Esperanto</option>
+<option value="es">es - Spanish</option>
+<option value="et">et - Estonian</option>
+<option value="eu">eu - Basque</option>
+<option value="fi">fi - Finnish</option>
+<option value="fr">fr - French</option>
+<option value="hr">hr - Croatian</option>
+<option value="hu">hu - Hungarian</option>
+<option value="is">is - Icelandic</option>
+<option value="it">it - Italian</option>
+<option value="lt">lt - Lithuanian</option>
+<option value="lv">lv - Latvian</option>
+<option value="no">no - Norwegian</option>
+<option value="pl">pl - Polish</option>
+<option value="pt">pt - Portuguese</option>
+<option value="ro">ro - Romanian</option>
+<option value="sk">sk - Slovak</option>
+<option value="sl">sl - Slovenian</option>
+<option value="sq">sq - Albanian</option>
+<option value="sr">sr - Serbian</option>
+<option value="sv">sv - Swedish</option>
+<option value="tr">tr - Turkish</option>
+<option value="vi">vi - Vietnamese (VNI)</option>
+</select>
+<p/>
+
+<input type="text" name="demo" id="bar" value="..."/>
+
+<p/>
+
+<script type="text/javascript">
+
+function update_mode(event) {
+  alert("select change " + event);
+}
+
+$(document).ready( function() {
+    $('textarea, input[type="text"]').each( function() {
+        $(this).attr("plkb-mode","all");
+        init_plkeyboard( $(this) );
+    } );
+    $('select').change( function(event) {
+        var id = $(this).attr("id");
+        var val = $(this).get(0).value;
+        $('textarea#' + id + ', input#' + id).each( function() {
+            $(this).attr("plkb-mode", val);
+        } );
+    } );
+} );
+
+</script>
 </body>
 </html>

@@ -1,20 +1,35 @@
 Pan-Latin Keyboard JavaScript App
 =================================
 
+(This file contains UTF-8 encoded characters. You may need
+to set your terminal locale settings to an appropriate value
+in order to view it correctly).
+
 Every bilingual computer user faces the dilemma of having
 a keyboard in front of them that is perfect for one of the
-languages that they know, but bad for the other language(s)
-they know. The Pan-Latin keyboard class is an attempt
-to solve this problem, at least for a good chunk of those
-languages that use the Latin alphabet.
+languages that they know, but difficult for the other language(s)
+they know. Virtual keyboard UIs, Microsoft Alt+codes, and copying-
+and-pasting from typeit.org are fine stop-gap measures if you only
+need to write a foreign character every once in a while. But 
+these methods are all difficult to use for serious 
+multi-lingual content creation.
 
-This script attaches behavior to an HTML textarea or
-other text input element. This way, someone sitting
-at an en-US keyboard can still type their é's, ñ's,
+The Pan-Latin keyboard application is an attempt to solve
+this problem, at least for a good chunk of those languages 
+that are based on the Latin alphabet.
+
+This application attaches behavior to an HTML textarea or
+other text input element so that some simple letter-digit
+keyboard combos will render a character with an accent
+or other special character. This way, someone sitting
+at an en-US keyboard can still type their è's, ñ's,
 and ß's without too much trouble.
 
 Each digit from 1 to 9 is associated with one or more
-diacritical marks. Here are the meanings of each digit,
+diacritical marks. When one of these digits is typed
+after a letter, this app may replace the previous character
+with another character that has a diacritical mark.
+Here are the meanings of each digit,
 and the set of extended-Latin characters that you can
 type with this class
 
@@ -37,36 +52,90 @@ type with this class
 
              e + 3  ==>  ë ,  ë + 0  ==>  e
 
-      and also to make the Turkish dotless i:  ı
+      and also to make the Turkish dotless i:  i + 0 ==>  ı
 
    11 - double acute          őű
    22 - macron                āēīōūĀĒĪŌŪ
 
-These characters should be sufficient for all your typing
-needs for many languages, including Spanish, Portuguese, 
-German,  French, Turkish, Italian, Polish, Romanian, Dutch,
-Serbian, Croatian, Bosnian, Hungarian, Catalan, Czech,
-Swedish, Danish, Finnish, Slovak, Afrikaans, Norwegian,
-and many others.
+With this JavaScript module, you should be able to type
+any character from the regular alphabets of these languages:
+
+    Afrikaans
+    Basque
+    Bosnian
+    Catalan
+    Croatian
+    Czech
+    Danish
+    Dutch
+    Esperanto
+    Estonian
+    Finnish
+    French
+    Galician
+    German
+    Hungarian
+    Icelandic
+    Italian
+    Latvian
+    Lithuanian
+    Norwegian
+    Polish
+    Portuguese
+    Romanian
+    Serbian
+    Slovak
+    Slovenian
+    Spanish
+    Swedish
+    Turkish
+    Welsh
 
 
 USAGE
 
 Include the source from the enclosed  panlatinkb.js
-file in your HTML file. Assign any textarea elements
-you wish to have this behavior available for to the
-class "plkb".
+file in your HTML file. Using jQuery or other 
+appropriate JavaScript, invoke the function
+plkeyboard_init  on a  textarea  or other text input
+element:
 
-    <textarea class="plkb" rows="..." cols="...">
-    your text here
-    </textarea>
+    <script type="text/javascript" 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src=".../panlatinkb.js"></script>
+    <script type="text/javascript">
+        $('textarea, input[type="text"]').each( function() {
+            $(this).attr("plkb-mode", "all");
+            init_plkeyboard( $(this) );
+        } );
+    </script>
+
+The attribute "plkb-mode" on the textarea or input element
+can customize the behavior of this script. The default mode
+is "all", which makes key combinations for all supported
+languages available. But you can change this value so that
+the app will only produce the characters for one particular
+language. See the available choices for this value in
+panlatinkb-map.js .
+
+Your HTML file should be encoding for displaying unicode
+characters (for example, it should have a line like
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+in the <head></head> section), or else 
+
 
 
 SUPPORT/FEEDBACK
 
 Please send feedback or feature requests to  
 mobrule@gmail.com . I'm particularly interested
-in hearing whether this is 
+in hearing whether the set of characters supported
+by this application is good enough for you and
+if the configuration of key combinations is 
+convenient enough and easy enough to learn.
 
 LICENSE AND COPYRIGHT
 
@@ -89,6 +158,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-
