@@ -251,8 +251,8 @@ function plkb_combine_keys( mode, c1, c2 ) {
 
 function init_plkeyboard( elem ) {
     if (!elem) elem = $(this);
-    if (!elem.attr("plkb-mode")) {
-	elem.attr("plkb-mode", "all");
+    if (!$(elem).attr("plkb-mode")) {
+	$(elem).attr("plkb-mode", "all");
     }
 
     if (elem.attachEvent) {
